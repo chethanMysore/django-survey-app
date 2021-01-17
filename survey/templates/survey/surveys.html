@@ -1,0 +1,17 @@
+<div class="card">
+  <h5 class="card-header">Available Surveys</h5>
+  <div class="card-body">
+      <p class="card-text">Participate in as many surveys as you like and help us understand you better!</p>
+      <ul>
+        {% for survey in surveys %}
+            <li>
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title"><a href="/survey/survey_details/{{survey.id}}">{{survey.name}}</a></h5>
+                  </div>
+                </div>
+            </li>
+        {% endfor %}
+      </ul>
+  </div>
+</div>

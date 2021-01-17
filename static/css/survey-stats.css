@@ -1,0 +1,9 @@
+/* Custom CSS for Survey Statistics Widget */
+
+.survey-stats-table{
+    width: 100%
+}
+.survey-stats-chart{
+    width: 30vw,
+    height: 30vh
+}

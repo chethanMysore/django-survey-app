@@ -1,0 +1,12 @@
+<!-- Copy of admin/base_site.html with some customizations -->
+<!-- https://github.com/django/django/blob/master/django/contrib/admin/templates/admin/base_site.html -->
+{% extends "admin/base.html" %}
+
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+<!-- Changed Admin App Name here -->
+<h1 id="site-name"><a href="{% url 'admin:index' %}">Sample Survey Administration</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

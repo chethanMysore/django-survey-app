@@ -1,0 +1,21 @@
+BEGIN;
+--
+-- Create model Survey
+--
+CREATE TABLE "survey_survey" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "name" varchar(200) NOT NULL, "published_on" datetime NOT NULL);
+--
+-- Create model Question
+--
+CREATE TABLE "survey_question" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "question_text" varchar(200) NOT NULL, "created_on" datetime NOT NULL, "survey_id" integer NOT NULL REFERENCES "survey_survey" ("id") DEFERRABLE INITIALLY DEFERRED);
+--
+-- Create model Participant
+--
+CREATE TABLE "survey_participant" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "participation_datetime" datetime NOT NULL, "survey_id" integer NOT NULL REFERENCES "survey_survey" ("id") DEFERRABLE INITIALLY DEFERRED);
+--
+-- Create model Choice
+--
+CREATE TABLE "survey_choice" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "choice_text" varchar(200) NOT NULL, "created_on" datetime NOT NULL, "votes" integer NOT NULL, "question_id" integer NOT NULL REFERENCES "survey_question" ("id") DEFERRABLE INITIALLY DEFERRED);
+CREATE INDEX "survey_question_survey_id_aa755a68" ON "survey_question" ("survey_id");
+CREATE INDEX "survey_participant_survey_id_3eaea200" ON "survey_participant" ("survey_id");
+CREATE INDEX "survey_choice_question_id_89c7008b" ON "survey_choice" ("question_id");
+COMMIT;
