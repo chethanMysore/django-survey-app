@@ -55,7 +55,8 @@ Navigate to the project directory (where manage.py is located) and run
 - After running the above command, the survey application will be available at http://localhost:8000/survey and the admin portal can be accessed at http://localhost:8000/admin
 
 ## User Guide
-
+Checkout this user guide for quick start
+[![Quick-User-Guide]()](https://drive.google.com/file/d/1A4ZZfvnk6kNZG8UUVqdS2PEca5BALuKd/view?usp=sharing)
 
 
 ## Resources Used
