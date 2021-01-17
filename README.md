@@ -60,15 +60,34 @@ Navigate to the project directory (where manage.py is located) and run
 ## Results:
 ### About Page
 Gives a brief description of the goals and features of the application
-![About-Page](static/img/about-page.png)
+![About-Page](static/img/about-page.jpg)
 
 ### Surveys List
 Lists all surveys created by admin
-![Survey-Form](static/img/survey-form.png)
+![Survey-list](static/img/survey-list.jpg)
 
 ### Survey Form
 Simple bootstrap4 form for survey
-![Survey-Form](static/img/survey-form.png)
+![Survey-Form](static/img/survey-form.jpg)
 
+### Survey Submit Success
+A success page after succesfully submitting the survey
+![Thank-You-Page](static/img/thank-you-page.jpg)
+
+### Admin Login
+Login page for admin
+![Admin-Login](static/img/login.jpg)
+
+### Admin Dashboard
+Dashboard for admin to manage surveys
+![Admin-Dashboard](static/img/admin-dashboard.jpg)
+
+### Survey Creation
+Create survey with cascaded questions and choices
+![Create-Survey](static/img/create-survey.jpg)
+
+### Survey Statistics
+A widget to display survey statistics
+![Survey-Stats](static/img/survey-stats.jpg)
 
 
