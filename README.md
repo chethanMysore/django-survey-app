@@ -13,8 +13,17 @@ This is a sample survey application built on [django-admin](https://github.com/d
 
 - python version > 3.6 installed
 - django version > 3.1.5 installed
-- nested-admin - pip install django-nested-admin 
-
+```cmd
+python -m pip install django
+```
+- nested-admin > 3.3.3 installed pip install django-nested-admin 
+```cmd
+pip install django-nested-admin 
+```
+or
+```cmd
+python -m pip install django-nested-admin 
+```
 ### Run
 #### Check for possible schema changes while using the version control as well as for the first run. 
 Navigate to the project directory (where manage.py is located) and run
