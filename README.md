@@ -54,6 +54,9 @@ Navigate to the project directory (where manage.py is located) and run
 - Suggestion: Run this with sudo(linux) and as administrator in windows so that the changes reflect at real time.
 - After running the above command, the survey application will be available at http://localhost:8000/survey and the admin portal can be accessed at http://localhost:8000/admin
 
+## User Guide
+
+
 
 ## Resources Used
  - [django](https://www.djangoproject.com/)
