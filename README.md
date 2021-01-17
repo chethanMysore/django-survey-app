@@ -53,8 +53,8 @@ Navigate to the project directory (where manage.py is located) and run
  - [chart.js](https://www.chartjs.org/)
  
 ## Additional files added and overrided templates from django-admin
- - static/*: the folder consists of static assets used by the application like JS, CSS, Images. static/JS also includes a custom Javascript file, survey_admin.js. the file contains logic to create charts and make AJAX calls to get nested survey entities. static.CSS includes survey-app.css and survey-stats.css to include custom css for widgets and changing overview of the admin portal.
- - templates/admin/*: the folder consists of overrided templates created as a copy from django-admin. This includes admin/base.html, admin/base_site.html and admin/index.html.
+ - <b>static/*</b>: the folder consists of static assets used by the application like JS, CSS, Images. <b>static/JS</b> also includes a custom Javascript file, [survey_admin.js](https://github.com/chethanMysore/django-survey-app/blob/master/static/js/survey-admin.js). the file contains logic to create charts and make AJAX calls to get nested survey entities. <b>static/CSS</b> includes [survey-app.css](https://github.com/chethanMysore/django-survey-app/blob/master/static/css/survey-app.css) and [survey-stats.css](https://github.com/chethanMysore/django-survey-app/blob/master/static/css/survey-stats.css) to include custom css for widgets and changing overview of the admin portal.
+ - <b>templates/admin/*</b>: the folder consists of overrided templates created as a copy from django-admin. This includes [admin/base.html](https://github.com/chethanMysore/django-survey-app/blob/master/templates/admin/base.html), [admin/base_site.html](https://github.com/chethanMysore/django-survey-app/blob/master/templates/admin/base_site.html) and [admin/index.html](https://github.com/chethanMysore/django-survey-app/blob/master/templates/admin/index.html).
  
 ## Results:
 ### About Page
