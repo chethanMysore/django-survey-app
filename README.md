@@ -50,6 +50,7 @@ Navigate to the project directory (where manage.py is located) and run
  - [nested-admin](https://github.com/django/django/tree/master/django/contrib/admin)
  - python
  - [JQuery](https://jquery.com/)
+ - [Bootstrap4](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
  - [chart.js](https://www.chartjs.org/)
  
 ## Additional files added and overrided templates from django-admin
@@ -59,7 +60,15 @@ Navigate to the project directory (where manage.py is located) and run
 ## Results:
 ### About Page
 Gives a brief description of the goals and features of the application
+![About-Page](static/img/about-page.png)
 
+### Surveys List
+Lists all surveys created by admin
+![Survey-Form](static/img/survey-form.png)
+
+### Survey Form
+Simple bootstrap4 form for survey
+![Survey-Form](static/img/survey-form.png)
 
 
 
