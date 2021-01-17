@@ -56,7 +56,7 @@ Navigate to the project directory (where manage.py is located) and run
 
 ## User Guide
 Checkout this user guide for quick start
-[![User-Quick-Guide](https://img.youtube.com/vi/O1UC-jgCdcc&ab_channel=ChethanRadhakrishna/0.jpg)](https://www.youtube.com/watch?v=O1UC-jgCdcc&ab_channel=ChethanRadhakrishna)
+[![User-Quick-Guide](static/img/about.jpg = 100x20)](https://www.youtube.com/watch?v=O1UC-jgCdcc&ab_channel=ChethanRadhakrishna)
 
 
 ## Resources Used
