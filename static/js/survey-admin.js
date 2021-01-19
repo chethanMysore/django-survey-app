@@ -24,7 +24,7 @@ $(document).ready(function(){
 
   // REST GET call to fetch all surveys which returns a stringified JSON
   // with object lists for each of the entities.
-  $.ajax({url: "http://localhost:8000/survey/get_all_surveys/", success: function(result){
+  $.ajax({url: `http://${window.location.host}/survey/get_all_surveys/`, success: function(result){
       if(!!result){
         try{
             if(!!result.surveys){
@@ -71,7 +71,7 @@ $(document).ready(function(){
   }});
 
   // REST GET call to retrieve the popular survey object based number of survey submissions.
-  $.ajax({url: "http://localhost:8000/survey/get_popular_survey/", success: function(result){
+  $.ajax({url: `http://${window.location.host}/survey/get_popular_survey/`, success: function(result){
       if(!!result){
         try{
             popular_survey = JSON.parse(result)
@@ -82,7 +82,7 @@ $(document).ready(function(){
 
                 // Update the table cell value with the link to popular survey item
                 $("#popular-survey").text(popular_survey_name)
-                $("#popular-survey").attr("href", `http://localhost:8000/admin/survey/survey/${popular_survey_id}`)
+                $("#popular-survey").attr("href", `http://${window.location.host}/admin/survey/survey/${popular_survey_id}`)
             }
         }
         catch(err){

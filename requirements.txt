@@ -1,0 +1,5 @@
+Django==3.1.5
+gunicorn==20.0.4
+django-nested-admin==3.3.3
+whitenoise==5.2.0
+dj-database-url==0.5.0
