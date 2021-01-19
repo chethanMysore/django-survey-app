@@ -1,0 +1,21 @@
+/* Custom CSS for survey application */
+
+.survey-navbar-link{
+    color: #fbf3f3 !important
+}
+.survey-about-img{
+    width: 100% !important;
+    height: 50vh !important;
+}
+ul{
+    list-style-type: none;
+}
+.card{
+    opacity: 0.9
+}
+.survey-form-card{
+    opacity: 0.8 !important
+}
+.active > a{
+    color: #ffc107 !important
+}

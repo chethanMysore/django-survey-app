@@ -1,0 +1,15 @@
+/* Custom CSS for Survey Statistics Widget */
+
+.survey-stats-table{
+    width: 100%
+}
+.survey-stats-chart{
+    width: 30vw,
+    height: 30vh
+}
+#header, .module h2, .module caption, .inline-group h2, div.breadcrumbs{
+    background: #333 !important;
+}
+#content-related .module h2, fieldset.collapsed h2{
+    color: #fff !important;
+}
