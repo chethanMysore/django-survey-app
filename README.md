@@ -1,5 +1,6 @@
 # django-survey-app
 This is a sample survey application built on [django-admin](https://github.com/django/django/tree/master/django/contrib/admin) following the [Django quick start tutorial](https://docs.djangoproject.com/en/3.1/intro/tutorial01/). This is a SPA built using django-framework where users can participate in surveys created by the administrator of the application. Each user participation is tracked by the administrator and is provided with visualizations on choice distributions for each question in the application. The administration dashboard is an extension of admin templates available in [django-admin](https://github.com/django/django/tree/master/django/contrib/admin). 
+### [Checkout the demo application hosted on heroku](https://fast-brushlands-08121.herokuapp.com/survey/)
 
 ## Features:
  - The polls application is extended to a survey where admin can create multiple surveys with multiple questions and choices for each question.
@@ -16,7 +17,7 @@ This is a sample survey application built on [django-admin](https://github.com/d
 ```cmd
 python -m pip install django
 ```
-- nested-admin > 3.3.3 installed pip install django-nested-admin 
+- nested-admin > 3.3.3 installed
 ```cmd
 pip install django-nested-admin 
 ```
