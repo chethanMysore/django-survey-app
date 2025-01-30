@@ -127,6 +127,36 @@ $(document).ready(function(){
     renderChart(selected_choices)
   })
 
+  // On clicking fetch feedbacks button
+  // fetch new feedbacks from kafka clusters
+  $("#fetch_new_feedbacks").click(function(){
+    $.ajax({
+    url: `http://${window.location.host}/admin/new_feedbacks`,
+    success: function(result){
+      if(!!result){
+        try{
+//            feedbacks = JSON.parse(result)
+            if(!!feedbacks){
+                console.log(`Fetched new feedbacks - ${feedbacks}`)}
+            else{
+                console.log(`No new feedbacks`)}
+//            if(Array.isArray(popular_survey)){
+//                popular_survey = popular_survey[0]
+//                popular_survey_id = popular_survey.pk
+//                popular_survey_name = popular_survey.fields.name
+//
+//                // Update the table cell value with the link to popular survey item
+//                $("#popular-survey").text(popular_survey_name)
+//                $("#popular-survey").attr("href", `http://${window.location.host}/admin/survey/survey/${popular_survey_id}`)
+            }
+        catch(err){
+            console.log("err occurred while parsing result response: ", err)
+        }
+     }
+    }
+   });
+  })
+
   // Helper to create chart.js bar chart with the choices for selected question
   const renderChart = (selected_choices) => {
     selected_choices = !!selected_choices && Array.isArray(selected_choices) ? selected_choices : []

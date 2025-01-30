@@ -5,3 +5,4 @@
 /survey/__pycache__/*
 .idea/*
 sql-script
+survey_app_log.log

@@ -40,8 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'survey.apps.SurveyConfig',
     'nested_admin',
-    'rest_framework',
-    'api'
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
