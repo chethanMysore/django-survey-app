@@ -15,8 +15,11 @@ All Nested Objects are collapsed by default in the form by setting classes=['col
 """
 
 from django.contrib import admin
+from django.urls import path
 import nested_admin
-from .models import Survey, Question, Choice
+from .models import Survey, Question, Choice, Feedback
+from confluent_kafka import Producer, Consumer
+import os
 
 
 class ChoiceInLine(nested_admin.NestedTabularInline):
@@ -53,6 +56,44 @@ class SurveyAdmin(nested_admin.NestedModelAdmin):
     inlines = [QuestionInLine]
     list_filter = ['published_on']
     search_fields = ['name']
+
+
+class MyAdminSite(admin.AdminSite):
+    def all_feedbacks(self, request):
+        feedbacks = []
+        print("Chucky here! Inside all_feedbacks")
+        return {'feedbacks': feedbacks}
+
+    def get_app_list(self, request, **kwargs):
+        app_list = super().get_app_list(request)
+        app_list += [
+            {
+                "name": "My Custom App",
+                "app_label": "my_test_app",
+                # "app_url": "/admin/test_view",
+                "models": [
+                    {
+                        "name": "tcptraceroute",
+                        "object_name": "tcptraceroute",
+                        "admin_url": "/admin/test_view",
+                        "view_only": True,
+                    }
+                ],
+            }
+        ]
+        return app_list
+
+    def get_urls(self):
+        urls = super().get_urls()
+        print("Chucky getting to urls!!!")
+        my_urls = [
+            path('/admin/', self.all_feedbacks, name="all_feedbacks"),
+        ]
+        return my_urls + urls
+
+
+admin_site = MyAdminSite(name="my_admin")
+admin.site.register(Feedback, site=admin_site)
 
 
 # Register Survey objects along with their nestings and fieldssets with admin

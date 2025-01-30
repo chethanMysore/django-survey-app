@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'survey.apps.SurveyConfig',
-    'nested_admin'
+    'nested_admin',
+    'rest_framework',
+    'api'
 ]
 
 MIDDLEWARE = [
@@ -67,6 +69,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries': {
+                'feedback_tags': 'sample_survey.templatetags.feedback_tags',
+
+            }
         },
     },
 ]

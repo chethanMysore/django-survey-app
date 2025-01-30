@@ -21,9 +21,11 @@ Survey Submit Success:
 ----------------------
 This is the success landing page for successful submission of the survey.
 """
-
+# from nested_admin import urls
 from django.urls import path
 from . import views
+from .admin import admin_site
+from django.contrib import admin
 
 urlpatterns = [
     # Default path is /survey/ which invokes index view without any params
@@ -41,6 +43,18 @@ urlpatterns = [
     # update entities based on the submitted form and redirect to success page
     path('submit_survey/', views.submit_survey, name="submit_survey"),
 
+    # API GET endpoint for returning customer feedbacks.
+    # This endpoint can also be used as a web hook in future. Currently it is used within the application.
+    path('get_all_feedbacks/', views.get_all_feedbacks, name="get_all_feedbacks"),
+
+    # This is the view hook to submit survey form,
+    # update entities based on the submitted form and redirect to success page
+    path('submit_feedback/', views.submit_feedback, name="submit_feedback"),
+
+    # This is the view for admin,
+    # On load, populate feedbacks
+    # path('admin/', views.all_feedbacks, name="all_feedbacks"),
+
     # This is the generic route for rendering all partial views without params
     # All routes are intercepted by index view middleware and respective partial view will be rendered accordingly
     # Note: This is a work around as at this point I could not find a better solution
@@ -50,3 +64,5 @@ urlpatterns = [
     # This is the generic route for rendering partial views with id parameter
     path('<str:partial_view>/<int:pk>', views.index, name="index/partial_view/id"),
 ]
+
+admin_site._registry.update(admin.site._registry)

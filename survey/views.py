@@ -53,19 +53,28 @@ from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse, JsonResponse
 from django.template.loader_tags import register
 from django.views.decorators.http import require_http_methods
-from .models import Survey, Question, Choice, Participant
+from .models import Survey, Question, Choice, Participant, Feedback
 from django.utils import timezone
 from django.core import serializers
 import operator
+from .utils import Logger
+import os
+from django.contrib import admin
+from django.urls import path
 
 all_partial_views = ['about', 'all_surveys', 'survey_details', 'submit_success']
+LOGGER_PATH = os.path.join(os.getcwd(), 'survey_app_log.log')
+logger = Logger('Sample_Survey', LOGGER_PATH).get_logger()
 
 
 @require_http_methods(["GET"])
 def index(request, partial_view=None, pk=None):
+    print(f'Chucky Here!! Partial View: {partial_view}')
     if partial_view is None:
         partial_view = 'about'
         return render(request, 'survey/index.html', {"partial_view": partial_view, "pk": pk})
+    elif partial_view == 'admin':
+        return render(request, 'admin/index.html')
     elif all_partial_views.count(partial_view) == 0:
         raise Http404('Partial View not found!')
     elif partial_view == "survey_details" and pk is None:
@@ -74,8 +83,24 @@ def index(request, partial_view=None, pk=None):
         return render(request, 'survey/index.html', {"partial_view": partial_view, "pk": pk})
 
 
+# @require_http_methods(["GET"])
+# def all_feedbacks(request):
+#     feedbacks1 = []
+#     print("Chucky here! Inside all_feedbacks")
+#     return render(request, 'admin/index.html')
+
+
+# @register.inclusion_tag('admin/index.html', takes_context=True)
+# def all_feedbacks(context):
+#     feedbacks = []
+#     print("Chucky here! Inside all_feedbacks")
+#     # surveys = Survey.objects.all()
+#     return {'feedbacks': feedbacks}
+
+
 @register.inclusion_tag('survey/surveys.html', takes_context=True)
 def all_surveys(context):
+    print("Chucky Here!!! Inside all_surveys")
     surveys = Survey.objects.all()
     return {'surveys': surveys}
 
@@ -145,3 +170,42 @@ def get_all_surveys(request):
     return JsonResponse({"surveys": serializers.serialize("json", surveys),
                          "questions": serializers.serialize("json", questions),
                          "choices": serializers.serialize("json", choices)})
+
+
+@require_http_methods(["GET"])
+def get_all_feedbacks(request):
+    feedbacks = Feedback.objects.all()
+
+    return JsonResponse({"feedbacks": serializers.serialize("json", feedbacks)})
+
+
+@require_http_methods(["POST"])
+def submit_feedback(request):
+    form_data = request.POST.copy()
+    # Example: {'csrfmiddlewaretoken': ['idT13LGpggg78Yr0rU3vSkT1PQxnM9hT7z97FvuZEBb
+    # IU2acygAUr2W3FE9SCGbk'], '1': ['choice/3'], '2': ['choice/5']}
+    form_items = list(form_data.items())
+    print("form_items", form_items)
+    # logger.info("form_items" + serializers.serialize("json", form_items))
+    form_items.pop(0)  # the first element is the csrf token. Therefore omit it.
+    feedback = None
+    feedback_data = []
+    for item in form_items:
+        key, value = item
+        feedback_data.append(value)
+    feedback = Feedback(type=feedback_data[0], created_on=timezone.now(), message=feedback_data[2])
+    feedback.save()
+    # survey = None
+    # for item in form_items:
+    #     # Here in 'choice/3', '3' is '<choice_id>'.
+    #     choice_str, choice_id = item
+    #     choice_id = int(choice_id.split('/')[1])
+    #     choice = Choice.objects.get(id=choice_id)
+    #     if survey is None:
+    #         survey = choice.question.survey
+    #     choice.votes = choice.votes + 1
+    #     choice.save()
+    # if survey is not None:
+    #     participant = Participant(survey=survey, participation_datetime=timezone.now())
+    #     participant.save()
+    return JsonResponse({"feedbacks": "saved successfully!!"})

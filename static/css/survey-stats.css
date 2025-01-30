@@ -1,7 +1,16 @@
 /* Custom CSS for Survey Statistics Widget */
 
 .survey-stats-table{
-    width: 100%
+    width: 100% !important
+}
+.survey-feedbacks-table{
+    width: 100% !important
+}
+.survey-feedbacks-table th,.survey-feedbacks-table td{
+    width: 20% !important
+}
+.survey-feedbacks-table th.message,.survey-feedbacks-table td.message{
+    width: 60% !important
 }
 .survey-stats-chart{
     width: 30vw,
@@ -9,6 +18,10 @@
 }
 #header, .module h2, .module caption, .inline-group h2, div.breadcrumbs{
     background: #333 !important;
+}
+#content-related{
+    width: 50vw !important;
+    margin-right: -51vw !important;
 }
 #content-related .module h2, fieldset.collapsed h2{
     color: #fff !important;

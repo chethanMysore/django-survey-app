@@ -2,7 +2,7 @@
 <!-- https://github.com/django/django/blob/master/django/contrib/admin/templates/admin/index.html -->
 {% extends "admin/base_site.html" %}
 {% load i18n static %}
-
+{% load feedback_tags %}
 {% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}">{% endblock %}
 
 {% block coltype %}colMS{% endblock %}
@@ -47,6 +47,78 @@
             {% endfor %}
             </ul>
             {% endif %}
+    </div>
+    <div class="module" id="feedback-module">
+        <div class="app-survey-stats module">
+            <table class="survey-feedbacks-table">
+              <caption class="section">
+                Feedbacks
+                {% all_feedbacks as feedbacks %}
+              </caption>
+              <tr class="model-stats current-model">
+                  <th scope="row">Type</th>
+                  <th scope="row">Created On</th>
+                  <th scope="row" class="message">Message</th>
+<!--                  <td ><a href="#" id="popular-survey">No Surveys Found</a></td>-->
+              </tr>
+                {% for feedback in feedbacks %}
+                {% get_feedback_type feedback.typ as feedback_type %}
+                {% if feedback_type %}
+              <tr>
+                  <td>{{ feedback_type }}</td>
+                  <td>{{ feedback.msg }}</td>
+                  <td>{{ feedback.created_on }}</td>
+              </tr>
+                {% endif %}
+                {% endfor %}
+
+<!--              <tr class="model-stats current-model">-->
+<!--                  <th scope="row">Popular Survey</th>-->
+<!--                  <td ><a href="#" id="popular-survey">No Surveys Found</a></td>-->
+<!--              </tr>-->
+<!--              <tr class="model-stats current-model">-->
+<!--                  <th scope="row" colspan="2">Statistics by Survey</th>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                  <td>-->
+<!--                      <Select id="surveys-dropdown">-->
+<!--                        <option selected>Select a survey</option>-->
+<!--                      </Select>-->
+<!--                  </td>-->
+<!--                  <td>-->
+<!--                      <Select id="questions-dropdown">-->
+<!--                        <option selected>Select a question</option>-->
+<!--                      </Select>-->
+<!--                  </td>-->
+<!--              </tr>-->
+<!--              <tr><td colspan="2"><div class="survey-stats-chart"><canvas id="votes_bar_chart"></canvas></div></td></tr>-->
+            </table>
+        </div>
+<!--        <h2>{% translate 'Feedbacks' %}</h2>-->
+<!--            {% load log %}-->
+            <!-- Here reduced the log display to top 5 entries and removed redundant 'MyActions' text-->
+<!--            {% get_admin_log 5 as admin_log for_user user %}-->
+<!--            {% if not admin_log %}-->
+<!--            <p>{% translate 'None available' %}</p>-->
+<!--            {% else %}-->
+<!--            <ul class="actionlist">-->
+<!--            {% for entry in admin_log %}-->
+<!--            <li class="{% if entry.is_addition %}addlink{% endif %}{% if entry.is_change %}changelink{% endif %}{% if entry.is_deletion %}deletelink{% endif %}">-->
+<!--                {% if entry.is_deletion or not entry.get_admin_url %}-->
+<!--                    {{ entry.object_repr }}-->
+<!--                {% else %}-->
+<!--                    <a href="{{ entry.get_admin_url }}">{{ entry.object_repr }}</a>-->
+<!--                {% endif %}-->
+<!--                <br>-->
+<!--                {% if entry.content_type %}-->
+<!--                    <span class="mini quiet">{% filter capfirst %}{{ entry.content_type.name }}{% endfilter %}</span>-->
+<!--                {% else %}-->
+<!--                    <span class="mini quiet">{% translate 'Unknown content' %}</span>-->
+<!--                {% endif %}-->
+<!--            </li>-->
+<!--            {% endfor %}-->
+<!--            </ul>-->
+<!--            {% endif %}-->
     </div>
 </div>
 {% endblock %}

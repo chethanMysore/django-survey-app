@@ -21,6 +21,8 @@ $(document).ready(function(){
   let choices = []
   let selected_survey_id = null
   let selected_question_id = null
+  // Feedbacks
+  let feedbacks = []
 
   // REST GET call to fetch all surveys which returns a stringified JSON
   // with object lists for each of the entities.

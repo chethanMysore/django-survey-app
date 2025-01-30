@@ -36,7 +36,20 @@ Methods:
 
 from django.db import models
 from django.utils import timezone
+# from utils import FeedbackType
 import datetime
+
+
+class Feedback(models.Model):
+    """Class to encapsulate Customer Feedback
+        Attributes:
+            type: character field with max_length=200
+            created_on: datetime field
+
+    """
+    type = models.IntegerField()
+    created_on = models.DateTimeField('Created DateTime')
+    message = models.CharField(max_length=1000)
 
 
 class Survey(models.Model):

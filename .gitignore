@@ -1,2 +1,7 @@
 *.sqlite3
 /survey/migrations/**
+/staticfiles/*
+/sample_survey/__pycache__/*
+/survey/__pycache__/*
+.idea/*
+sql-script
